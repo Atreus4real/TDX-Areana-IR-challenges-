@@ -15,15 +15,11 @@ identification of the MD5 hash demonstrate the effectiveness of the implemented 
 ## Tools and Technologies Used
 Volatility: A memory forensics tool used to analyze the memory dump and identify suspicious 
 processes. 
-`7-Zip`: A file archiver used to extract the contents of the password-protected zip file. 
-`grep`: A command-line utility used for searching specific patterns within files. 
-`md5sum`: A utility to compute and verify MD5 hash values. 
-`strings`: A command-line utility used to extract printable characters from binary files. 
-`hexdump`: Command-line utility used to view binary file content in hexadecimal format.
-
-- Volatility
-- 7-Zip
-- `strings`, `grep`, `hexdump`, and `md5sum`
+- `7-Zip`: A file archiver used to extract the contents of the password-protected zip file. 
+- `grep`: A command-line utility used for searching specific patterns within files. 
+- `md5sum`: A utility to compute and verify MD5 hash values. 
+- `strings`: A command-line utility used to extract printable characters from binary files. 
+- `hexdump`: Command-line utility used to view binary file content in hexadecimal format.
 
 ## Key Findings
 | **Network & File-related findings** | **Details** |
