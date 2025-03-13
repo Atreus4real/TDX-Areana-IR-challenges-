@@ -168,50 +168,62 @@ recommendations are made to enhance the security posture and improve the inciden
 processes:
 
 ***Enhance Monitoring and Detection Capabilities:*** 
-- Deploy Advanced Threat Detection Tools:
-
-Utilize advanced endpoint detection and 
+- Deploy Advanced Threat Detection Tools: Utilize advanced endpoint detection and 
 response (EDR) solutions to monitor and analyze system activities in real-time, focusing 
 on processes like MsMpEng.exe and powershell.exe. 
 
-- ***Implement Behavioral Analytics:***
-
+ - Implement Behavioral Analytics:
 Integrate behavioral analytics to detect anomalies 
 and suspicious behaviors that could indicate malicious activity.
 
-Regular Memory Forensics and Analysis: 
-• Conduct Regular Memory Dumps: Schedule regular memory dump analyses using 
-tools like Volatility to proactively identify and investigate suspicious activities. 
-• Automate Forensic Analysis: Develop and implement automated scripts to run key 
+***Regular Memory Forensics and Analysis:*** 
+- Conduct Regular Memory Dumps: 
+Schedule regular memory dump analyses using 
+tools like Volatility to proactively identify and investigate suspicious activities.
+
+- Automate Forensic Analysis:
+Develop and implement automated scripts to run key 
 Volatility plugins and generate reports for quicker incident detection and response. 
-Strengthen System Hardening and Configuration: 
-• Restrict PowerShell Usage: Implement policies to restrict the use of PowerShell 
+
+**Strengthen System Hardening and Configuration:**
+
+- Restrict PowerShell Usage: Implement policies to restrict the use of PowerShell 
 scripts, especially for non-administrative users, to minimize the risk of exploitation. 
-• Update Security Configurations: Regularly update and audit security configurations 
+- Update Security Configurations: Regularly update and audit security configurations 
 to ensure that only necessary processes and services are running. 
-Improve File Integrity and Encryption Practices: 
-• Enforce File Integrity Monitoring: Deploy file integrity monitoring solutions to detect 
-unauthorized changes to critical files and configurations. 
-• Use Strong Encryption: Ensure that sensitive files are encrypted both at rest and in 
-transit using strong encryption standards. 
-Incident Response Training and Drills: 
-• Conduct Regular Training: Provide ongoing training for the incident response team on 
-the latest forensic analysis techniques and tools. 
-• Simulate Attack Scenarios: Perform regular incident response drills to simulate 
+
+***Improve File Integrity and Encryption Practices:**
+
+- Enforce File Integrity Monitoring: Deploy file integrity monitoring solutions to detect 
+unauthorized changes to critical files and configurations.
+- Use Strong Encryption: Ensure that sensitive files are encrypted both at rest and in 
+transit using strong encryption standards.
+
+***Incident Response Training and Drills:***
+
+- Conduct Regular Training: Provide ongoing training for the incident response team on 
+the latest forensic analysis techniques and tools.
+- Simulate Attack Scenarios: Perform regular incident response drills to simulate 
 potential attack scenarios and evaluate the effectiveness of response strategies. 
-Enhance Logging and Alerting: 
-• Centralize Log Management: Use a centralized log management system to aggregate 
-logs from various sources for better analysis and correlation. 
-• Set Up Comprehensive Alerts: Configure alerts for specific events, such as the 
+
+***Enhance Logging and Alerting:*** 
+
+- Centralize Log Management: Use a centralized log management system to aggregate 
+logs from various sources for better analysis and correlation.
+- Set Up Comprehensive Alerts: Configure alerts for specific events, such as the 
 execution of PowerShell scripts or the creation of suspicious files, to enable timely 
 responses. 
-Regularly Update Security Tools: 
-• Patch and Update Tools: Ensure all security tools and frameworks, including Volatility, 
+
+**Regularly Update Security Tools:***
+
+- Patch and Update Tools: Ensure all security tools and frameworks, including Volatility, 
 are regularly updated to the latest versions to benefit from new features and security 
-patches. 
-• Review Tool Configurations: Periodically review and adjust the configurations of 
+patches.
+- Review Tool Configurations: Periodically review and adjust the configurations of 
 security tools to ensure optimal performance and detection capabilities. 
-Conduct Thorough Post-Incident Reviews: 
-• Analyze Incident Responses: After each incident, perform a detailed review to 
+
+***Conduct Thorough Post-Incident Reviews:***
+
+- Analyze Incident Responses: After each incident, perform a detailed review to 
 identify what worked well and what could be improved. 
-• Document Lessons Learned: Maintain detailed documentation of lessons learned from each incident to refine and enhance the incident response process continually.
+- Document Lessons Learned: Maintain detailed documentation of lessons learned from each incident to refine and enhance the incident response process continually.
