@@ -36,7 +36,107 @@ processes.
 
 
 ## Investigation Process
-See the detailed analysis in [Report-Imperial Memory.pdf](./Report-Imperial%20Memory.pdf).
+- ***The first step: Identifying the Profile:***
+
+The first thing I did is identifying the profile using Volatility to determine the profile of the 
+memory dump for analysis by running the command: `vol.py -f /home/derrek/Desktop/Emperor.vmem imageinfo`
+
+![image](https://github.com/user-attachments/assets/e1e181f9-542b-40c2-9247-cd319e604b6f)
+This command outputs various details about the memory dump, including the suggested profile, 
+which is essential for accurate analysis. Based on the output, the suggested profiles include 
+several versions of Windows10. 
+
+
+
+- ***The Second step: Identifying Suspicious Processes:***
+
+Next, I used the malfind plugin in Volatility to identify suspicious memory regions associated with 
+processes. The command used: `vol.py -f /home/derrek/Desktop/Emperor.vmem -
+profile=Win10x64_17134 malfind`
+![image](https://github.com/user-attachments/assets/862b68ab-12f5-4895-bd93-3fce9c2e96fe)
+This command highlighted suspicious memory regions, particularly for MsMpEng.exe and 
+powershell.exe, indicating potential malicious activity.
+
+- ***Step Tree: Identifying the Process ID:***
+
+Since the previous step showed that suspicious processes, To proceed with a more targeted 
+analysis, I identified the process ID (PID) for powershell.exe using the cmdline plugin in 
+Volatility. By executing the command: `vol.py -f /home/derrek/Desktop/Emperor.vmem -
+profile=Win10x64_17134 cmdline`
+![image](https://github.com/user-attachments/assets/e28e6fec-e762-4d01-8d19-d0ccd69e8f14)
+This command showed that the PID for powershell.exe is 5496. 
+
+- ***Step Four: Dumping Process Memory***
+
+To further investigate, I dumped the memory of the suspicious processes for detailed analysis. 
+The commands used were: `vol.py -f /home/derrek/Desktop/Emperor.vmem -
+profile=Win10x64_17134 memdump -p 5496 --dump-dir /home/derrek/dumped_files/`
+![image](https://github.com/user-attachments/assets/abf72b94-e5e8-4d47-a365-acd9c2b0f387)
+This command retrieves the command-line arguments used by processes in the specified 
+memory dump, the command dumped the memory of the process with PID 5496 
+(powershell.exe) to the specified directory as showned below:
+![image](https://github.com/user-attachments/assets/655732fe-4f1a-4655-a3e9-21d78d773495)
+A new file should appear in the specified directory.  
+
+- ***Step Five: Extracting and Analyzing Strings:***
+
+I then used the strings command to extract printable strings from the dumped memory and 
+searched for relevant keywords to uncover hidden commands or passwords: `strings 
+/home/derrek/Desktop/5496.dmp | grep -A 5 -B 5 -Ei 'gift\.7z|zip|password|Compress
+Archive|archive' > /home/derrek/Desktop/filtered_output`
+![image](https://github.com/user-attachments/assets/c8160f58-af03-4914-b1f6-6f1d8902cfb3)
+This command will analyze the binary file, search for relevant strings, and save the results 
+to filtered_output. The command was successful and a new file was created as shown below: 
+![image](https://github.com/user-attachments/assets/5e0484d4-87a6-4ee1-89e7-3aa4334cecd5)
+
+
+Then I opened the newly created file and discovered the following:
+![image](https://github.com/user-attachments/assets/81343f64-d447-4ffa-8d83-608c3e4c4ade)
+The command used 7-Zip (7z.exe) to create an archive and it includes a password for 
+encryption. The user referenced in the command is Aaron. This can be seen from the file paths: 
+`C:\Users\Aaron\Desktop\gift.7z`
+
+- **7-Zip (7z.exe)**: A file archiver with a high compression ratio. 
+- **A command**: Stands for "add" and is used to add files to an archive. 
+- **Archive Path**: The location where the archive file will be created. 
+- **Source Path**: The file or directory that will be added to the archive. 
+- **Password Protection**: The -p switch followed by the password string ensures that the archive 
+- will be encrypted with the specified password which is: **G6Vmc$Qd5cpM8ee#Ca=x&A3**
+
+---
+- ***Step Six: Extracting the Zip File:***
+
+Using the identified password, I extracted the zip file (gift.7z) by executing the command: `7z x 
+/home/derrek/Desktop/gift.7z -o/home/derrek/Desktop/` this command will extract the files 
+from gift.7z to your desktop directory.
+![image](https://github.com/user-attachments/assets/1d9dd91c-d7e1-4e12-b756-06298871602f)
+
+Once extracted, the file named suspicious.docx was found. But the file was empty. Here is what 
+you will see when you open the file:
+![image](https://github.com/user-attachments/assets/359e0558-4d32-4616-8732-54af4127c22f)
+
+
+
+
+- ***The seventh step: Analyzing Extracted File:***
+
+In this step, I had to think critically because the extracted file was empty. The only thing I could 
+come up with was to check the file’s Magic Bytes, so I used the `hexdump` utility.
+
+`hexdump`: This command is used to filter and display the specified files or standard input in a 
+human-readable format. It’s commonly used to examine binary files.
+![image](https://github.com/user-attachments/assets/202aa43b-5486-4cac-8ace-c5e2374836b0)
+
+The `-C` option displays the input data in a “canonical” format, which includes both hexadecimal 
+and ASCII representations. 
+The `head` command limits the output to the first few lines (usually 10 lines by default).
+
+The hexdump output indicates that the file starts with `50 4B 03 04`, which corresponds to the 
+ASCII characters PK. This signature indicates that the file is a ZIP archive. Once I confirmed 
+that, I changed the file extension from docx to 7z.
+
+---
+***The first step: Identifying the Profile:***
 
 ## Reproduce the Steps
 ```bash
