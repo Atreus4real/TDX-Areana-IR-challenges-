@@ -12,15 +12,6 @@ identification of the MD5 hash demonstrate the effectiveness of the implemented 
 - Extracting a password-protected ZIP (`gift.7z`).
 - Recovering the MD5 hash `0f235385d25ade312a2d151a2cc43865` from `secrets.txt`.
 
-## Tools and Technologies Used
-Volatility: A memory forensics tool used to analyze the memory dump and identify suspicious 
-processes. 
-- `7-Zip`: A file archiver used to extract the contents of the password-protected zip file. 
-- `grep`: A command-line utility used for searching specific patterns within files. 
-- `md5sum`: A utility to compute and verify MD5 hash values. 
-- `strings`: A command-line utility used to extract printable characters from binary files. 
-- `hexdump`: Command-line utility used to view binary file content in hexadecimal format.
-
 ## Key Findings
 | **Network & File-related findings** | **Details** |
 |:------------------------------------|:-------------|
@@ -34,8 +25,17 @@ processes.
 | **User Found**                      | Aaron – A user that created the Zip file and the password. |
 | **Profile**                         | Windows10 - Profiles include several versions of Windows 10. |
 
+## Tools and Technologies Used
+Volatility: A memory forensics tool used to analyze the memory dump and identify suspicious 
+processes. 
+- `7-Zip`: A file archiver used to extract the contents of the password-protected zip file. 
+- `grep`: A command-line utility used for searching specific patterns within files. 
+- `md5sum`: A utility to compute and verify MD5 hash values. 
+- `strings`: A command-line utility used to extract printable characters from binary files. 
+- `hexdump`: Command-line utility used to view binary file content in hexadecimal format.
 
-## Full Report
+
+## Investigation Process
 See the detailed analysis in [Report-Imperial Memory.pdf](./Report-Imperial%20Memory.pdf).
 
 ## Reproduce the Steps
