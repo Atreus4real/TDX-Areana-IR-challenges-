@@ -44,3 +44,65 @@ This report details the process of detecting port scanning activity using Snort 
 **nano:** A command-line text editor.
 
 - **Reason:** Used to create and edit Snort rule files for defining custom detection rules.
+
+---
+
+## Investigation Process
+
+### The first step: Initial Traffic Capture
+I started by capturing all incoming traffic on interface `eth0` using the **tcpdump** utility by executing the command:
+
+```bash
+sudo tcpdump -i eth0
+```
+![image](https://github.com/user-attachments/assets/fc1104a1-9977-476c-95cf-6a19c24a0eb5)
+
+---
+
+### The Second step: Filtered Traffic Capture.
+
+The second step was to capture only TCP SYN packets on interface eth0 by using the command: 
+```bash
+sudo tcpdump -n -i eth0 'tcp[tcpflags] & (tcp-syn) != 0'
+```
+This action isolated connection 
+attempts that are common indicators of port scans and narrowed down the data to relevant 
+traffic for further analysis.
+![image](https://github.com/user-attachments/assets/7039d0fd-69a7-40f8-a109-779330590944)
+The captured packets show repeated attempts to connect from IP address `172.29.0.1` to various 
+ports on IP address `172.29.0.3`. This indicates multiple TCP connection attempts. This might be 
+an indicate of a port scanning.
+
+## Step Three: Creating a Custom Snort Rule
+
+I decided to add a custom rule to Snort to detect multiple SYN packets from the same source based on the Second step assumption. I edited the local rules file with the command:  
+```bash
+nano /etc/snort/rules/local.rules
+```
+and added the following rule `alert tcp any any -> any 1:1024 (msg:"Potential Port Scan Detected"; flags:S; threshold:type both, track by_src, count 10, seconds 2; sid:1000001; rev:1;)`
+
+![image](https://github.com/user-attachments/assets/4b905ba6-ac30-4364-b2fe-5cae469a54b9)
+
+This rule alerts on potential port scans by detecting multiple SYN packets from the same source 
+within a short time frame. After creating the rule, I pressed Ctrl+O to save the editing and 
+Ctrl+X to exit the file.
+
+## Step Four: Running Snort with the New Rule. 
+
+I ran Snort in detection mode to monitor the filtered traffic by executing the command: 
+```
+sudo 
+snort -c /etc/snort/snort.conf -A console. Then waited a few second and I received an alert:
+```
+![image](https://github.com/user-attachments/assets/28f26ca6-d6eb-4d79-b467-b58dc0d23d66)
+
+This alert indicated the detection of potential port scanning activities, confirming that the custom 
+rule was effectively isolating and identifying relevant traffic.
+
+## Step Five: Running Snort. 
+
+
+
+
+
+
