@@ -126,9 +126,30 @@ submitted the flag and win the challenge.
 
 ![image](https://github.com/user-attachments/assets/d611f446-e989-45a7-b787-1fc375860c52)
 
-## Recommendations
+## Conclusion and Recommendations
 
+This investigation successfully identified and mitigated a port scanning attack using a systematic approach involving network traffic analysis and custom rule creation in Snort. The detection process highlighted the importance of utilizing effective filtering techniques and the need for precise rule configurations in intrusion detection systems. The findings underscore the critical role of continuous monitoring and regular updates to security measures to safeguard against evolving threats. The recommendations provided aim to enhance the security posture and prevent similar incidents in the future, ensuring a robust defense against network-based attacks.
 
+### Recommendations
+Based on the findings, the following recommendations are made to mitigate identified risks and prevent future incidents:
+
+1. **Enable IDS/IPS Systems:**  
+   Ensure Snort or similar IDS/IPS systems are actively monitoring network traffic.  
+
+2. **Utilize Effective Filtering Techniques:**  
+   Employ precise filtering methods in traffic analysis to reduce noise and improve detection accuracy.  
+
+3. **Precise Rule Configurations:**  
+   Configure detection rules accurately to ensure they effectively capture and alert on malicious activities without generating false positives.  
+
+4. **Regularly Update Rules:**  
+   Keep the intrusion detection rules updated to identify the latest threats.  
+
+5. **Implement Network Segmentation:**  
+   Isolate critical systems to minimize the impact of network scans and potential attacks.  
+
+6. **Conduct Regular Audits:**  
+   Periodically review network traffic logs and IDS alerts to identify and respond to suspicious activities promptly.  
 
 
 
