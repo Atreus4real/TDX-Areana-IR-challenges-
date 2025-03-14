@@ -39,10 +39,29 @@ This file is identified as a Shikataganai Trojan capable of stealing sensitive d
 ### Investigation Process  
 
 #### Step 1: Navigate to Directory  
-```bash
-bruce@workstation:~$ ls  
-Desktop Documents Downloads Music Pictures Public Templates Videos  
 
-bruce@workstation:~$ cd Desktop/  
-bruce@workstation:~/Desktop$ ls  
-chromium.desktop firefox-esr.desktop suspicious-files clamav-ui org.kde.konsole.desktop
+Involved navigating to the Desktop directory to confirm the presence of the "suspicious-files" 
+folder. This was verified by running the `ls` command.
+![image](https://github.com/user-attachments/assets/f1438836-4411-4bc0-9e81-6873630f1a9d)
+
+## The Second step: Attempted to scan the folder with ClamAV 
+
+I tried to scan the directory containing suspicious files using the ClamAV command: 
+```
+clamscan -r 
+home/bruce/Desktop/suspicious-files
+```
+The `-r` flag specifies that the scan should be recursive, 
+meaning it will scan all files and subdirectories within the specified directory. 
+![image](https://github.com/user-attachments/assets/81117a3a-86c1-41f0-9cd2-62c349745cc2)
+
+However, it was found that the ClamAV utility was not installed or not found. An attempt to run 
+the command with sudo privileges also failed due to lack of sudo permissions. 
+
+## Step Tree: Compressing the files 
+
+
+
+
+```bash
+
