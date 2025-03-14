@@ -101,6 +101,36 @@ rule was effectively isolating and identifying relevant traffic.
 
 ## Step Five: Running Snort. 
 
+I then quickly opened a new tab and sent the filtered traffic to Snorby by executing the 
+command: 
+```
+sudo snort -c /etc/snort/snort.conf
+```
+
+## Step Six: Scanning the targeted file 
+
+Next, I logged in to Snorby using the provided credentials. On the right side of the dashboard, 
+there were alerts displaying the unique rule ID that I had created, confirming that the rule was 
+successfully detecting and reporting the specified traffic.
+![image](https://github.com/user-attachments/assets/4fad5491-a5f7-49f9-aeb5-d846d7c63e97)
+
+Then clicked on one of them
+![image](https://github.com/user-attachments/assets/fe9a8099-28d6-4a7a-880d-45665ce1dc69)
+
+- The source IP and the destination IP are as expected based on the network traffic. Then clicked: 
+Perform Mass Classification option on the top right side of the screen as shown:
+![image](https://github.com/user-attachments/assets/ae0ac865-c5df-4de9-9ece-9bab5e5c0f59)
+
+- Then I found the Flag which is the MD5 hash: 1fdcf70d937c1d1796a53fb4fdb9e79c. then 
+submitted the flag and win the challenge. 
+
+![image](https://github.com/user-attachments/assets/d611f446-e989-45a7-b787-1fc375860c52)
+
+## Recommendations
+
+
+
+
 
 
 
