@@ -3,13 +3,6 @@
 
 ---
 
-## Sabour Almahdi  
-**Final Assessment Report Submission**  
-**Case: One of us**  
-*17th June 2024*
-
----
-
 ### Executive Summary  
 This report details the identification and remediation of malicious files found on a workstation. The investigation involved navigating to the directory containing the suspicious files, attempting to scan the files using ClamAV, generating their MD5 hashes, compressing the files into a single ZIP file, and scanning the compressed file using VirusTotal. The VirusTotal scan revealed a highly malicious file, `file176.exe`, which was identified as a Trojan. The steps outlined provide a comprehensive approach to addressing and preventing similar incidents in the future.
 
