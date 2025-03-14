@@ -60,6 +60,26 @@ the command with sudo privileges also failed due to lack of sudo permissions.
 
 ## Step Tree: Compressing the files 
 
+I decided to scan the file using VirusTotal. Due to limitations in VirusTotal for scanning multiple 
+files simultaneously, I decided to compress the files into a single ZIP file using the zip utility: 
+`zip file.zip suspicious-files/*` This command will compress all files directly within the “suspicious
+files” directory into a ZIP file named “file.zip”
+![image](https://github.com/user-attachments/assets/821a04c1-e6d0-499c-9cc1-64a82a0fde15)
+
+A zip file should appear on the desktop directory as shown below.
+![image](https://github.com/user-attachments/assets/ad9dfacf-fa3d-4ee0-b720-6e00c87404a0)
+
+
+## Step Four: VirusTotal Scan of Compressed File 
+
+After creating the file.zip archive, I selected and uploaded it to VirusTotal for comprehensive 
+scanning using multiple antivirus engines.
+![image](https://github.com/user-attachments/assets/551a7410-a619-4479-a27a-b28df6131a1f)
+
+## Step Five: Analyzing & Identification of Malicious File 
+
+The VirusTotal scan revealed that *file176.exe* had a high malicious value with 7/66 detections. 
+The file type was identified as a DOS EXE as showed:
 
 
 
