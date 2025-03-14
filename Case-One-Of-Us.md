@@ -81,7 +81,28 @@ scanning using multiple antivirus engines.
 The VirusTotal scan revealed that *file176.exe* had a high malicious value with 7/66 detections. 
 The file type was identified as a DOS EXE as showed:
 
+![image](https://github.com/user-attachments/assets/e1931427-6a96-468e-8a2b-5d895be1b15c)
 
+## Step Six: Scanning the targeted file 
+
+After identifying file176.exe as suspicious, I scanned the file individually using VirusTotal. The 
+scan results were as follows:
+
+#### Step 6: Scanning the Targeted File  
+After identifying `file176.exe` as suspicious, the file was scanned individually using VirusTotal. Results included:  
+
+| **Attribute**         | **Value**                                  |  
+|-----------------------|--------------------------------------------|  
+| Detections            | Flagged by 5-10 security vendors          |  
+| Malware Type          | Trojan (Shikataganai)                      |  
+| File Type             | EXE                                        |  
+
+**Malware Capabilities**:  
+- Steals sensitive information (passwords, banking details).  
+- Downloads and installs additional malware.  
+- Grants remote control of the infected machine.  
+- Logs keystrokes to capture user credentials.  
+- Creates backdoors for future attacks.  
 
 ```bash
 
