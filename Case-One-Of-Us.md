@@ -86,9 +86,7 @@ The file type was identified as a DOS EXE as showed:
 ## Step Six: Scanning the targeted file 
 
 After identifying file176.exe as suspicious, I scanned the file individually using VirusTotal. The 
-scan results were as follows:
-
-#### Step 6: Scanning the Targeted File  
+scan results were as follows: 
 After identifying `file176.exe` as suspicious, the file was scanned individually using VirusTotal. Results included:  
 
 | **Attribute**         | **Value**                                  |  
@@ -104,5 +102,18 @@ After identifying `file176.exe` as suspicious, the file was scanned individually
 - Logs keystrokes to capture user credentials.  
 - Creates backdoors for future attacks.  
 
-```bash
+
+## Step Seven: Calculating MD5 Hash 
+
+After gathering all the information that I needed, one final step was left: calculating the MD5 
+hash value. I used the `md5sum` utility to calculate the MD5 hash of the malicious file. 
+
+![image](https://github.com/user-attachments/assets/3e89ae82-fb35-49ee-962c-d824b96daeb3)
+
+`md5sum` command calculates and verifies 128-bit MD5 hashes for files. There for I answered 
+the question “Enter an MD5 hash value” by submitting the hash value I completed the 
+challenge.
+
+### Recommendations
+
 
