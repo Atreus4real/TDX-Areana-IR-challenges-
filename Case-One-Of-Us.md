@@ -1,6 +1,7 @@
 # TDX ARENA  
 **Certification Report**
 
+# Case one of us
 ---
 
 ### Executive Summary  
@@ -114,6 +115,27 @@ hash value. I used the `md5sum` utility to calculate the MD5 hash of the malicio
 the question “Enter an MD5 hash value” by submitting the hash value I completed the 
 challenge.
 
-### Recommendations
+--- 
+
+
+### Recommendations  
+
+1. **Install ClamAV Properly**  
+   Ensure ClamAV is installed and accessible, and verify permissions for scanning.  
+
+2. **Enable Antivirus Software**  
+   Ensure that antivirus software is enabled and updated on all systems.  
+
+3. **Regular Scans**  
+   Schedule regular scans to detect and remove potential threats promptly.  
+
+4. **Ensure Minimum Necessary Privileges for Users**  
+   Grant users only the essential sudo privileges required for specific administrative tasks. This approach limits potential security risks while allowing users to perform necessary actions.  
+
+5. **Add the Malicious File Signature to the AV**  
+   Update the antivirus software with the signature of the malicious file to ensure it can be detected and blocked in the future.  
+
+6. **User Training**  
+   Educate users on safe computing practices to prevent malware infections. 
 
 
