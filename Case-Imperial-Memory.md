@@ -6,7 +6,7 @@ findings include identifying and extracting a password-protected zip file and su
 uncovering nested hidden files. The approach taken involved using Volatility to analyze the 
 memory dump, extracting the relevant process memory, and utilizing string searches to find the 
 password and extract the contents. The successful extraction of the hidden files and the 
-identification of the MD5 hash demonstrate the effectiveness of the implemented measures
+identification of the MD5 hash demonstrate the effectiveness of the implemented measures 
  Key steps included:
 - Analyzing processes with **Volatility**.
 - Extracting a password-protected ZIP (`gift.7z`).
